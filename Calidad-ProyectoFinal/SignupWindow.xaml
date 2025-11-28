@@ -1,0 +1,23 @@
+﻿<Window x:Class="Calidad_ProyectoFinal.SignupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Sign up - Firebase Auth App" WindowStartupLocation="CenterOwner" Style="{StaticResource Dialog}">
+    <StackPanel Margin="40">
+        <TextBlock Style="{StaticResource FormLabel}" Text="Display name:"/>
+        <TextBox x:Name="DisplaynameBox" Style="{StaticResource FormField}" Text="Aarón"/>
+
+        <TextBlock Style="{StaticResource FormLabel}" Text="Username (email):"/>
+        <TextBox x:Name="UsernameBox" Style="{StaticResource FormField}" Text="azunigamo@ucenfotec.ac.cr" TextChanged="UsernameBox_TextChanged"/>
+        <TextBlock x:Name="UsernameError" Style="{StaticResource FormError}" Text=""/>
+
+        <TextBlock Style="{StaticResource FormLabel}" Text="Password:"/>
+        <PasswordBox x:Name="PasswordBox" Style="{StaticResource FormPassword}" Password="A1234!" PasswordChanged="PasswordBox_PasswordChanged"/>
+        <TextBlock x:Name="PasswordError" Style="{StaticResource FormError}" Text=""/>
+
+        <TextBlock Style="{StaticResource FormLabel}" Text="Repeat password:"/>
+        <PasswordBox x:Name="RepeatPasswordBox" Style="{StaticResource FormPassword}" Password="A1234!" PasswordChanged="RepeatPasswordBox_PasswordChanged"/>
+        <TextBlock x:Name="RepeatPasswordError" Style="{StaticResource FormError}" Text=""/>
+
+        <Button x:Name="SignupButton" Content="Sign up" Click="Signup_Click"/>
+    </StackPanel>
+</Window>
