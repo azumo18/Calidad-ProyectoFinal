@@ -8,6 +8,8 @@ namespace Calidad_ProyectoFinal.Tests
 {
     public class FirebaseAuthServiceTests
     {
+        /// <summary> A fake HttpMessageHandler to mock HttpClient responses </summary>
+        /// <param name="fakeResponse"> Fake response to be gotten from the mock call </param>
         private class FakeHttpMessageHandler(HttpResponseMessage fakeResponse) : HttpMessageHandler
         {
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -16,6 +18,7 @@ namespace Calidad_ProyectoFinal.Tests
             }
         }
 
+        /// <summary> Creates a mock HttpClient with a predefined response </summary>
         private static HttpClient CreateMockHttpClient(string fakeJson, HttpStatusCode statusCode)
         {
             var fakeResponse = new HttpResponseMessage(statusCode)
@@ -27,6 +30,8 @@ namespace Calidad_ProyectoFinal.Tests
             return new HttpClient(handler);
         }
 
+        /// <summary> Mock tests for LoginAsync method with valid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task LoginAsync_ReturnsSuccess_WhenValidCredentials()
         {
@@ -43,6 +48,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal("SUCCESS", result);
         }
 
+        /// <summary> Mock tests for LoginAsync method with invalid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task LoginAsync_ThrowsException_WhenBadRequest()
         {
@@ -62,6 +69,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal($"Login failed: {message}", ex.Message);
         }
 
+        /// <summary> Mock tests for SignUpAsync method with valid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task SignUpAsync_ReturnsSuccess_WhenValidCredentials()
         {
@@ -78,6 +87,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal("SUCCESS", result);
         }
 
+        /// <summary> Mock tests for SignUpAsync method with invalid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task SignUpAsync_ThrowsException_WhenBadRequest()
         {
@@ -97,6 +108,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal($"Signup failed: {message}", ex.Message);
         }
 
+        /// <summary> Mock tests for ResetPasswordAsync method with valid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task ResetPasswordAsync_ReturnsSuccess_WhenValidCredentials()
         {
@@ -113,6 +126,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal("SUCCESS", result);
         }
 
+        /// <summary> Mock tests for ResetPasswordAsync method with invalid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task ResetPasswordAsync_ThrowsException_WhenBadRequest()
         {
@@ -132,6 +147,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal($"Password reset failed: {message}", ex.Message);
         }
 
+        /// <summary> Mock tests for UpdateProfileAsync method with valid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task UpdateProfileAsync_ReturnsSuccess_WhenValidCredentials()
         {
@@ -148,6 +165,8 @@ namespace Calidad_ProyectoFinal.Tests
             Assert.Equal("SUCCESS", result);
         }
 
+        /// <summary> Mock tests for UpdateProfileAsync method with invalid credentials </summary>
+        /// <returns></returns>
         [Fact]
         public async Task UpdateProfileAsync_ThrowsException_WhenBadRequest()
         {

@@ -18,21 +18,15 @@ namespace Calidad_ProyectoFinal
         private static string RefreshToken = string.Empty;
         private static string ExpiresIn = string.Empty;
 
-        /// <summary>
-        /// Exposes current user's JWT token value
-        /// </summary>
+        /// <summary> Exposes current user's JWT token value </summary>
         /// <returns>Current user's JWT token</returns>
         public static string GetIdToken() {  return IdToken; }
 
-        /// <summary>
-        /// Exposes current user's display name
-        /// </summary>
+        /// <summary> Exposes current user's display name </summary>
         /// <returns>Current user's display name</returns>
         public static string GetDisplayName() { return DisplayName; }
 
-        /// <summary>
-        /// Sets a new display name from json document
-        /// </summary>
+        /// <summary> Sets a new display name from json document </summary>
         /// <param name="doc">Json document</param>
         public static void SetDisplayNameFromJson(JsonDocument doc)
         {
@@ -40,9 +34,7 @@ namespace Calidad_ProyectoFinal
             DisplayName = GetPropertyString(doc, "displayName");
         }
 
-        /// <summary>
-        /// Loads current user data from json document
-        /// </summary>
+        /// <summary> Loads current user data from json document </summary>
         /// <param name="doc"></param>
         public static void LoadCurrentUserDataFromJson(JsonDocument doc)
         {
@@ -55,9 +47,7 @@ namespace Calidad_ProyectoFinal
             ExpiresIn = GetPropertyString(doc, "expiresIn");
         }
 
-        /// <summary>
-        /// Helper method to retrieve a string type property's value from a json document
-        /// </summary>
+        /// <summary> Helper method to retrieve a string type property's value from a json document </summary>
         /// <param name="doc">Json document</param>
         /// <param name="property">Property to be searched for</param>
         /// <returns>Property's value</returns>
@@ -72,9 +62,7 @@ namespace Calidad_ProyectoFinal
             return string.Empty;
         }
 
-        /// <summary>
-        /// Helper method to retrieve a boolean type property's value from a json document
-        /// </summary>
+        /// <summary> Helper method to retrieve a boolean type property's value from a json document </summary>
         /// <param name="doc">Json document</param>
         /// <param name="property">Property to be searched for</param>
         /// <returns>Property's value</returns>
@@ -91,9 +79,7 @@ namespace Calidad_ProyectoFinal
             }
         }
 
-        /// <summary>
-        /// Resets the current user to initial values
-        /// </summary>
+        /// <summary> Resets the current user to initial values </summary>
         public static void Logout()
         {
             LocalId = string.Empty;

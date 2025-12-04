@@ -4,89 +4,10 @@
              xmlns:local="clr-namespace:Calidad_ProyectoFinal"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-
-        <SolidColorBrush x:Key="BackgroundBrush" Color="DarkSlateBlue"/>
-        <SolidColorBrush x:Key="TextBrush" Color="Azure"/>
-        <SolidColorBrush x:Key="ButtonBrush" Color="LightGreen"/>
-        <SolidColorBrush x:Key="HighlightBrush" Color="Orange"/>
-        <SolidColorBrush x:Key="ErrorBrush" Color="LightCoral"/>
-        <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="Transparent"/>
-
-        <Style x:Key="Windows" TargetType="Window">
-            <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <Style x:Key="Dialog" TargetType="Window" BasedOn="{StaticResource Windows}">
-            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-            <Setter Property="ResizeMode" Value="NoResize"/>
-            <Setter Property="ShowInTaskbar" Value="False"/>
-        </Style>
-        
-        <Style x:Key="FormLabel" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="0,0,0,10"/>
-        </Style>
-
-        <Style x:Key="FormField" TargetType="TextBox">
-            <Setter Property="Width" Value="400"/>
-            <Setter Property="Margin" Value="20,0,20,20"/>
-            <Setter Property="Padding" Value="10"/>
-        </Style>
-
-        <Style x:Key="FormPassword" TargetType="PasswordBox">
-            <Setter Property="Width" Value="400"/>
-            <Setter Property="Margin" Value="20,0,20,20"/>
-            <Setter Property="Padding" Value="10"/>
-            <Setter Property="MaxLength" Value="10"/>
-        </Style>
-
-        <Style x:Key="FormError" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{StaticResource ErrorBrush}"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="20,-14,0,20"/>
-            <Style.Triggers>
-                <Trigger Property="Text" Value="">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" BorderThickness="4" BorderBrush="{StaticResource ButtonBrush}" Background="{StaticResource ButtonBackgroundBrush}" CornerRadius="20" Padding="10">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HighlightBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource HighlightBrush}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource ButtonBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}"/>
-                            </Trigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="IsMouseOver" Value="True"/>
-                                    <Condition Property="IsFocused" Value="True"/>
-                                </MultiTrigger.Conditions>
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource HighlightBrush}"/>
-                            </MultiTrigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value=".25"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Foreground" Value="{StaticResource ButtonBrush}"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Margin" Value="0,10"/>
-            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

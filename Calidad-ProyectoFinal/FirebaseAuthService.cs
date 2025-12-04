@@ -7,25 +7,23 @@ using Microsoft.Extensions.Configuration;
 
 namespace Calidad_ProyectoFinal
 {
-    /// <summary>
-    /// Calls Firebase Auth API to perform different tasks
-    /// </summary>
+    /// <summary> Calls Firebase Auth API to perform different tasks </summary>
     public static class FirebaseAuthService
     {
+        /// <summary> Configuration builder to read appsettings.Development.json file </summary>
         private static readonly IConfigurationRoot config = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true)
             .Build();
 
+        /// <summary> Firebase Auth API Key from appsettings.Development.json </summary>
         private static readonly string apiKey = config["Firebase:ApiKey"];
 
-        /// <summary>
-        /// Handles user sign-up calls
-        /// </summary>
+        /// <summary> Handles user sign-up calls </summary>
         /// <param name="email">User's email</param>
         /// <param name="password">User's password</param>
         /// <param name="httpClient">Optional Http Client used for mock testing</param>
-        /// <returns></returns>
+        /// <returns>On success if no error is thrown</returns>
         /// <exception cref="Exception">Handles sign-up errors</exception>
         public static async Task<string> SignUpAsync(string email, string password, HttpClient? httpClient)
         {
@@ -51,13 +49,11 @@ namespace Calidad_ProyectoFinal
             return "SUCCESS";
         }
 
-        /// <summary>
-        /// Handles user profile update calls (in this case for Display Name updates only)
-        /// </summary>
+        /// <summary> Handles user profile update calls (in this case for Display Name updates only) </summary>
         /// <param name="idToken">User's JWT token gotten from either sign-up or login</param>
         /// <param name="displayName">User's chosen Display Name on the app</param>
         /// <param name="httpClient">Optional Http Client used for mock testing</param>
-        /// <returns></returns>
+        /// <returns>On success if no error is thrown</returns>
         /// <exception cref="Exception">Handles user profile update errors</exception>
         public static async Task<string> UpdateProfileAsync(string idToken, string displayName, HttpClient? httpClient)
         {
@@ -81,13 +77,11 @@ namespace Calidad_ProyectoFinal
             return "SUCCESS";
         }
 
-        /// <summary>
-        /// Handles user login calls
-        /// </summary>
+        /// <summary> Handles user login calls </summary>
         /// <param name="email">User's email</param>
         /// <param name="password">User's password</param>
         /// <param name="httpClient">Optional Http Client used for mock testing</param>
-        /// <returns></returns>
+        /// <returns>On success if no error is thrown</returns>
         /// <exception cref="Exception">Handles user login errors</exception>
         public static async Task<string> LoginAsync(string email, string password, HttpClient? httpClient)
         {
@@ -111,12 +105,10 @@ namespace Calidad_ProyectoFinal
             return "SUCCESS";
         }
 
-        /// <summary>
-        /// Handles user password reset calls
-        /// </summary>
+        /// <summary> Handles user password reset calls </summary>
         /// <param name="email">User's email</param>
         /// <param name="httpClient">Optional Http Client used for mock testing</param>
-        /// <returns></returns>
+        /// <returns>On success if no error is thrown</returns>
         /// <exception cref="Exception">Handles user password reset errors</exception>
         public static async Task<string> ResetPasswordAsync(string email, HttpClient? httpClient)
         {
@@ -131,13 +123,10 @@ namespace Calidad_ProyectoFinal
             if (!response.IsSuccessStatusCode)
                 throw new Exception($"Password reset failed: {GetErrorMessageFromJson(doc)}");
 
-            // Firebase sends reset email automatically
             return "SUCCESS";
         }
 
-        /// <summary>
-        /// Gets the Firebase Auth API response's error message from json
-        /// </summary>
+        /// <summary> Gets the Firebase Auth API response's error message from json </summary>
         /// <param name="doc">Json formated API response</param>
         /// <returns>Error message</returns>
         private static string GetErrorMessageFromJson(JsonDocument doc)
